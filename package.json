@@ -1,0 +1,19 @@
+{
+  "source": "src/index.html",
+  "scripts": {
+    "start": "PORT=33846 parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@emotion/css": "^11.11.2",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "parcel": "^2.9.3",
+    "prettier": "2.8.8",
+    "prettier-plugin-organize-imports": "3.2.2",
+    "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.1.6"
+  }
+}
