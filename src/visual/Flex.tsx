@@ -6,7 +6,7 @@ import { css, cx } from "@emotion/css";
 // <Stack x="4px center 4px" y="4px stretch" />
 // <Stack x="4px 5px center 4px" y="4px 6px stretch" />
 
-type CssLength = `${number}px` | "0";
+type CssLength = `${number}px` | `${number}rem` | "0";
 type Padding = CssLength;
 type PaddingShorthand = Padding | `${Padding} ${Padding}`;
 type Gap = CssLength;

@@ -20,11 +20,11 @@ const ColorInput: React.FC<{
   return (
     <Flex
       inline
-      y="8px stretch 12px"
-      x="8px center"
+      y="8rem stretch 12rem"
+      x="8rem center"
       className={css`
         flex: 0 0 auto;
-        width: 150px;
+        width: 100rem;
       `}
     >
       <input

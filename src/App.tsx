@@ -57,16 +57,17 @@ export default function () {
   }
 
   return (
-    <Flex y="20px 40px" x="stretch 8px" flex="1 0 0">
+    <Flex y="20rem 40rem" x="stretch 8rem" flex="1 0 0">
       <div
         className={css`
           margin: 0 auto;
+          max-width: 100%;
         `}
       >
         <LayeringVisual bg={bg} fg={fg} sum={sum} />
       </div>
 
-      <Flex wrap x="center 10px" y="50px">
+      <Flex wrap x="center 10rem" y="50rem">
         <Flex y x="center">
           Background
           <ColorInput
@@ -114,11 +115,11 @@ export default function () {
       />
 
       <Flex
-        y="20px"
+        y="20rem"
         className={css`
           margin: 0 auto;
           width: 100%;
-          max-width: 600px;
+          max-width: 600rem;
         `}
       >
         <div>
@@ -136,7 +137,7 @@ export default function () {
               width: 100%;
               resize: vertical;
               min-height: 5em;
-              flex-basis: 1 0 800px;
+              flex-basis: 1 0 800rem;
             `}
           />
         </div>
@@ -151,7 +152,7 @@ export default function () {
               width: 100%;
               resize: vertical;
               min-height: 5em;
-              flex-basis: 1 0 800px;
+              flex-basis: 1 0 800rem;
               user-select: all;
             `}
           />

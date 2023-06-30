@@ -6,11 +6,13 @@
     <title>ColorLab</title>
     <style>
       :root {
-        font: 16px monospace;
+        font-size: clamp(0.2px, 100vw / 400, 1px);
         height: 100%;
+        height: 100svh;
       }
 
       body {
+        font: 16rem monospace;
         margin: 0;
         height: 100%;
       }
@@ -21,7 +23,8 @@
         flex-direction: column;
       }
 
-      input {
+      input,
+      textarea {
         font: inherit;
         color: inherit;
 
