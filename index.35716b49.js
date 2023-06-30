@@ -11,9 +11,9 @@ function e(e,n,t,r){Object.defineProperty(e,n,{get:t,set:r,enumerable:!0,configu
           justify-content: ${n.justifyContent};
           padding: ${n.padding};
           gap: ${n.gap};
-        `,e.className),children:e.children})},ek={colors:[0,0,0],a:0};function ew(e){let n=e.match(/^#*([0-9a-f]{6,8})$/i);if(!n)return null;let[t,r,a,l]=n[1].match(/../g).map(e=>parseInt(e,16)/255);return{colors:[t,r,a],a:l??=1}}function ex(e){return"#"+[...e.colors,e.a].map(e=>Math.round(255*e).toString(16).padStart(2,"0")).join("").toUpperCase()}var eS=e=>{let[n,t]=(0,em.useState)(ek),r=e.value??n,a=e.onChangeValue??t,l=ex(r);return(0,i.jsxs)(eb,{inline:!0,y:"8px stretch 12px",x:"8px center",className:eh`
+        `,e.className),children:e.children})},ek={colors:[0,0,0],a:0};function ew(e){let n=e.match(/^#*([0-9a-f]{6,8})$/i);if(!n)return null;let[t,r,a,l]=n[1].match(/../g).map(e=>parseInt(e,16)/255);return{colors:[t,r,a],a:l??=1}}function ex(e){return"#"+[...e.colors,e.a].map(e=>Math.round(255*e).toString(16).padStart(2,"0")).join("").toUpperCase()}var eS=e=>{let[n,t]=(0,em.useState)(ek),r=e.value??n,a=e.onChangeValue??t,l=ex(r);return(0,i.jsxs)(eb,{inline:!0,y:"8rem stretch 12rem",x:"8rem center",className:eh`
         flex: 0 0 auto;
-        width: 150px;
+        width: 100rem;
       `,children:[(0,i.jsx)("input",{type:"text",placeholder:"#88888888",value:l,onFocus:e=>{e.currentTarget.select()},onInput:e=>{let n=ew(e.currentTarget.value);n&&a(n)},className:eh`
           text-align: center;
         `}),(0,i.jsx)("input",{type:"color",value:l.slice(0,7),onInput:e=>{let n=ew(e.currentTarget.value);n&&(n.a=r.a,a(n))}}),(0,i.jsx)("input",{type:"range",min:"0",max:"1",step:"0.01",value:r.a,onInput:e=>{a({colors:r.colors,a:e.currentTarget.valueAsNumber})}})]})};function eE(e,n,t){return Math.min(Math.max(e,n),t)}function eC(e){return{colors:e.colors.map(e=>eE(0,e,255)),a:eE(0,e.a,1)}}function e_(e){return`rgba(${e.colors.map(e=>255*e).join(",")}, ${e.a})`}var eN=e=>(0,i.jsxs)("div",{className:eh`
@@ -24,49 +24,51 @@ function e(e,n,t,r){Object.defineProperty(e,n,{get:t,set:r,enumerable:!0,configu
           linear-gradient(-45deg, black 25%, transparent 25%),
           linear-gradient(45deg, transparent 75%, black 75%),
           linear-gradient(-45deg, transparent 75%, black 75%);
-        background-size: 20px 20px;
-        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        background-size: 20rem 20rem;
+        background-position: 0 0, 0 10rem, 10rem -10rem, -10rem 0rem;
 
         position: relative;
-        width: 200px;
-        height: 120px;
+        width: 200rem;
+        max-width: 100%;
+        aspect-ratio: 200 / 120;
       `,children:[(0,i.jsx)("div",{id:"backgroundColor",className:eh`
           position: absolute;
-          width: 100px;
-          height: 100px;
+          width: 50%;
+          height: 83%;
         `,style:{background:e_(e.bg)}}),(0,i.jsx)("div",{id:"inputColor",className:eh`
           position: absolute;
-          top: 20px;
-          width: 100px;
-          height: 100px;
+          top: 17%;
+          width: 50%;
+          height: 83%;
         `,style:{background:e_(e.fg)}}),(0,i.jsx)("div",{id:"targetColor",className:eh`
           position: absolute;
-          top: 20px;
-          left: 100px;
-          width: 100px;
-          height: 80px;
-        `,style:{background:e_(e.sum)}})]});function eP(e,n,t){let r=e.a*(1-t);return{colors:[0,1,2].map(a=>(n.colors[a]*n.a-e.colors[a]*r)/t).map(e=>Math.max(0,Math.min(1,e))),a:t}}var em=o("acw62");function ez(e,n){let[t,r]=(0,em.useState)(e);return[t,function(e){r(n(e))}]}const eT=n(document.querySelector("#app"));eT.render((0,i.jsx)(function(){let[e,n]=ez(ew("#0000FFFF"),eC),[t,r]=ez(ew("#FF000080"),eC),[a,l]=ez(ek,eC),[o,u]=(0,em.useState)("background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);"),[s,c]=(0,em.useState)(""),[f,d]=(0,em.useState)("single");function p(e,n){let t=function(e,n){let t=e.a*(1-n.a),r=n.a+t;return{colors:[0,1,2].map(a=>{let l=n.colors[a],o=e.colors[a];return(l*n.a+o*t)/r}),a:r}}(e,n);return l(t),t}function h(e,n,t){let r=e.replaceAll(/#?([0-9a-f]{6,8})|rgba?\(([^\)]*)\)/gi,e=>{let r=function(e){let n=e.match(/rgba?\((.*)\)/);if(!n)return null;let[t,r,a]=n[1].split(",").map(e=>parseFloat(e)/255);return{colors:[t,r,a],a:1}}(e)??ew(e);return r?ex(eP(n,r,t)):e});return c(r),r}return(0,em.useEffect)(()=>{p(e,t),h(o,e,t.a)},[]),(0,i.jsxs)(eb,{y:"20px 40px",x:"stretch 8px",flex:"1 0 0",children:[(0,i.jsx)("div",{className:eh`
+          top: 17%;
+          left: 50%;
+          width: 50%;
+          height: 67%;
+        `,style:{background:e_(e.sum)}})]});function eP(e,n,t){let r=e.a*(1-t);return{colors:[0,1,2].map(a=>(n.colors[a]*n.a-e.colors[a]*r)/t).map(e=>Math.max(0,Math.min(1,e))),a:t}}var em=o("acw62");function ez(e,n){let[t,r]=(0,em.useState)(e);return[t,function(e){r(n(e))}]}const eT=n(document.querySelector("#app"));eT.render((0,i.jsx)(function(){let[e,n]=ez(ew("#0000FFFF"),eC),[t,r]=ez(ew("#FF000080"),eC),[a,l]=ez(ek,eC),[o,u]=(0,em.useState)("background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);"),[s,c]=(0,em.useState)(""),[f,d]=(0,em.useState)("single");function p(e,n){let t=function(e,n){let t=e.a*(1-n.a),r=n.a+t;return{colors:[0,1,2].map(a=>{let l=n.colors[a],o=e.colors[a];return(l*n.a+o*t)/r}),a:r}}(e,n);return l(t),t}function h(e,n,t){let r=e.replaceAll(/#?([0-9a-f]{6,8})|rgba?\(([^\)]*)\)/gi,e=>{let r=function(e){let n=e.match(/rgba?\((.*)\)/);if(!n)return null;let[t,r,a]=n[1].split(",").map(e=>parseFloat(e)/255);return{colors:[t,r,a],a:1}}(e)??ew(e);return r?ex(eP(n,r,t)):e});return c(r),r}return(0,em.useEffect)(()=>{p(e,t),h(o,e,t.a)},[]),(0,i.jsxs)(eb,{y:"20rem 40rem",x:"stretch 8rem",flex:"1 0 0",children:[(0,i.jsx)("div",{className:eh`
           margin: 0 auto;
-        `,children:(0,i.jsx)(eN,{bg:e,fg:t,sum:a})}),(0,i.jsxs)(eb,{wrap:!0,x:"center 10px",y:"50px",children:[(0,i.jsxs)(eb,{y:!0,x:"center",children:["Background",(0,i.jsx)(eS,{value:e,onChangeValue:e=>{n(e),p(e,t),h(o,e,t.a)}})]}),(0,i.jsxs)(eb,{y:!0,x:"center",children:["Foreground",(0,i.jsx)(eS,{value:t,onChangeValue:n=>{r(n),p(e,n),h(o,e,n.a)}})]}),(0,i.jsxs)(eb,{y:!0,x:"center",className:eh`
+          max-width: 100%;
+        `,children:(0,i.jsx)(eN,{bg:e,fg:t,sum:a})}),(0,i.jsxs)(eb,{wrap:!0,x:"center 10rem",y:"50rem",children:[(0,i.jsxs)(eb,{y:!0,x:"center",children:["Background",(0,i.jsx)(eS,{value:e,onChangeValue:e=>{n(e),p(e,t),h(o,e,t.a)}})]}),(0,i.jsxs)(eb,{y:!0,x:"center",children:["Foreground",(0,i.jsx)(eS,{value:t,onChangeValue:n=>{r(n),p(e,n),h(o,e,n.a)}})]}),(0,i.jsxs)(eb,{y:!0,x:"center",className:eh`
             opacity: ${"single"!==f&&.2};
           `,children:["Result",(0,i.jsx)(eS,{value:a,onChangeValue:n=>{l(n),r(eP(e,n,t.a)),d("single")}})]})]}),(0,i.jsx)("hr",{className:eh`
           width: 80%;
-        `}),(0,i.jsxs)(eb,{y:"20px",className:eh`
+        `}),(0,i.jsxs)(eb,{y:"20rem",className:eh`
           margin: 0 auto;
           width: 100%;
-          max-width: 600px;
+          max-width: 600rem;
         `,children:[(0,i.jsxs)("div",{children:["Text containing results",(0,i.jsx)("textarea",{value:o,onChange:n=>{let r=n.target.value;u(r),h(r,e,t.a),d("text-box")},className:eh`
               box-sizing: border-box;
               width: 100%;
               resize: vertical;
               min-height: 5em;
-              flex-basis: 1 0 800px;
+              flex-basis: 1 0 800rem;
             `})]}),(0,i.jsxs)("div",{children:["Text containing foregrounds",(0,i.jsx)("textarea",{value:s,readOnly:!0,onFocus:e=>e.target.select(),className:eh`
               box-sizing: border-box;
               width: 100%;
               resize: vertical;
               min-height: 5em;
-              flex-basis: 1 0 800px;
+              flex-basis: 1 0 800rem;
               user-select: all;
             `})]})]})]})},{}));
-//# sourceMappingURL=index.a3dea3ec.js.map
+//# sourceMappingURL=index.35716b49.js.map
