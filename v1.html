@@ -11,12 +11,7 @@
   <div style="position: relative; width: 200px; height: 105px">
     <div
       id="backgroundColor"
-      style="
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        background-color: #f00;
-      "
+      style="position: absolute; width: 100px; height: 100px; background-color: #f00"
     ></div>
     <div
       id="inputColor"
@@ -82,22 +77,14 @@
   <div style="width: 100%; max-width: 80ch">
     <label style="display: flex; align-items: center; gap: 6px">
       Target
-      <input
-        type="text"
-        style="flex: 1 0 0"
-        oninput="updateTextBackward(this.value);"
-      />
+      <input type="text" style="flex: 1 0 0" oninput="updateTextBackward(this.value);" />
     </label>
   </div>
 
   <div style="width: 100%; max-width: 80ch">
     <label style="display: flex; align-items: center; gap: 6px">
       Input
-      <input
-        type="text"
-        style="flex: 1 0 0"
-        oninput="updateTextBackward(this.value);"
-      />
+      <input type="text" style="flex: 1 0 0" oninput="updateTextBackward(this.value);" />
     </label>
   </div>
 
@@ -108,8 +95,7 @@
     // }
 
     function fromAnyColorString(colorString) {
-      return;
-      fromRgbString(colorString) ?? fromHex(colorString);
+      return fromRgbString(colorString) ?? fromHex(colorString);
     }
 
     function fromRgbString(rgb) {
@@ -155,8 +141,7 @@
 
       return {
         colors: [0, 1, 2].map(
-          (i) =>
-            (fg.colors[i] * fg.alpha + bg.colors[i] * bgEffectiveA) / blendedA,
+          (i) => (fg.colors[i] * fg.alpha + bg.colors[i] * bgEffectiveA) / blendedA,
         ),
         alpha: blendedA,
       };
@@ -177,47 +162,29 @@
 
       return {
         colors: [0, 1, 2]
-          .map(
-            (i) =>
-              (blended.colors[i] * blended.alpha -
-                bg.colors[i] * bgEffectiveA) /
-              fgAlpha,
-          )
+          .map((i) => (blended.colors[i] * blended.alpha - bg.colors[i] * bgEffectiveA) / fgAlpha)
           .map(clamp),
         alpha: fgAlpha,
       };
     }
 
     function updateForward() {
-      const bg = fromRgbString(
-        document.querySelector("#backgroundColor").style.backgroundColor,
-      );
-      const fg = fromRgbString(
-        document.querySelector("#inputColor").style.backgroundColor,
-      );
-      fg.alpha = parseFloat(
-        document.querySelector("#inputColor").style.opacity,
-      );
+      const bg = fromRgbString(document.querySelector("#backgroundColor").style.backgroundColor);
+      const fg = fromRgbString(document.querySelector("#inputColor").style.backgroundColor);
+      fg.alpha = parseFloat(document.querySelector("#inputColor").style.opacity);
 
       const blended = applyColorOverColor(bg, fg);
       // console.log(bg, fg, blended);
       // console.log(toHex(blended));
 
       // console.log(toHex(fg));
-      document.querySelector("#targetColor").style.backgroundColor =
-        toHex(blended);
+      document.querySelector("#targetColor").style.backgroundColor = toHex(blended);
     }
 
     function updateBackward() {
-      const bg = fromRgbString(
-        document.querySelector("#backgroundColor").style.backgroundColor,
-      );
-      const target = fromRgbString(
-        document.querySelector("#targetColor").style.backgroundColor,
-      );
-      const opacity = parseFloat(
-        document.querySelector("#inputColor").style.opacity,
-      );
+      const bg = fromRgbString(document.querySelector("#backgroundColor").style.backgroundColor);
+      const target = fromRgbString(document.querySelector("#targetColor").style.backgroundColor);
+      const opacity = parseFloat(document.querySelector("#inputColor").style.opacity);
 
       const fg = removeBackgroundFromColor(bg, target, opacity);
       fg.alpha = 1;
@@ -228,12 +195,8 @@
     }
 
     function updateBackwardText() {
-      const bg = fromRgbString(
-        document.querySelector("#backgroundColor").style.backgroundColor,
-      );
-      const opacity = parseFloat(
-        document.querySelector("#inputColor").style.opacity,
-      );
+      const bg = fromRgbString(document.querySelector("#backgroundColor").style.backgroundColor);
+      const opacity = parseFloat(document.querySelector("#inputColor").style.opacity);
 
       // const target =
 
