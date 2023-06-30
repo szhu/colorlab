@@ -2,6 +2,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "strict": true,
-    "lib": ["esnext", "dom"]
+    "lib": ["DOM", "DOM.Iterable", "ESNext"]
   }
 }

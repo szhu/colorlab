@@ -1,27 +1,23 @@
 name: Build and Deploy
-
 permissions:
   contents: write
-
 on:
   push:
-    branches: ["main"]
+    branches:
+      - "main"
   pull_request:
-    branches: ["main"]
-
+    branches:
+      - "main"
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-
       - name: Install and Build
         run: |
           yarn
           yarn build --public-url .
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
